@@ -9,6 +9,21 @@ use tui::style::{Style, Color, Modifier};
 use tui::widgets::TableState;
 use std::io;
 use crate::process::Task;
+use crate::tui::{layout::get_chunks};
+
+
+/// Render the process table block (left panel)
+pub fn render_process_block(
+    f: &mut tui::Frame<'_, CrosstermBackend<io::Stdout>>,
+    table_state: &mut TableState,
+    processes: &[crate::process::Task],
+) {
+    let chunks = get_chunks(f);
+    let left_block = tui::widgets::Block::default()
+        .borders(tui::widgets::Borders::ALL)
+        .title("Processes");
+    render_process_table(f, left_block, chunks[0], table_state, processes);
+}
 
 /// Renders the process table in the given area.
 ///

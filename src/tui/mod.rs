@@ -2,8 +2,9 @@
 
 pub mod app;
 pub mod layout;
-pub mod process_table;
+pub mod process;
 pub mod details;
 pub mod help;
+pub mod events;
 
 pub use app::run_tui; 
