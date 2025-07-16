@@ -12,6 +12,7 @@ pub fn get_processes() -> Vec<Task> {
     for (pid, process) in system.processes() {
         let pid_u32: u32 = pid.as_u32();
         let ports: Vec<u16> = get_ports_by_pid(pid_u32);
+        
         tasks.push(Task {
             pid: pid_u32,
             name: process.name().to_string_lossy().to_string(),
