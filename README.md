@@ -1,4 +1,4 @@
-# Rust TUI Task Manager
+# Task Manager
 
 A modern, cross-platform terminal-based process manager written in Rust.  
 Easily monitor, explore, and interact with system processes in a fast, keyboard and mouse-friendly TUI.
