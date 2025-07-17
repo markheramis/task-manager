@@ -34,8 +34,10 @@ pub fn run_tui() -> Result<(), io::Error> {
     let mut processes = get_processes();
     let mut last_refresh = Instant::now();
     
+    let refresh_interval = Duration::from_secs(60);
+
     loop {
-        if last_refresh.elapsed() >= Duration::from_secs(5) {
+        if last_refresh.elapsed() >= refresh_interval {
             processes = get_processes();
             last_refresh = Instant::now();
         }
