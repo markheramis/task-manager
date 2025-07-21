@@ -2,24 +2,24 @@
 
 use sysinfo::{System};
 use netstat2::{get_sockets_info, AddressFamilyFlags, ProtocolFlags, ProtocolSocketInfo};
-use super::model::Task;
+use super::model::Process;
 
 /// Fetches all processes and their open ports.
-pub fn get_processes() -> Vec<Task> {
+pub fn get_processes() -> Vec<Process> {
     let mut system = System::new_all();
     system.refresh_all();
-    let mut tasks = Vec::new();
+    let mut processs: Vec<Process> = Vec::new();
     for (pid, process) in system.processes() {
         let pid_u32: u32 = pid.as_u32();
         let ports: Vec<u16> = get_ports_by_pid(pid_u32);
         
-        tasks.push(Task {
+        processs.push(Process {
             pid: pid_u32,
             name: process.name().to_string_lossy().to_string(),
             ports: ports
         });
     }
-    tasks
+    processs
 }
 
 /// Returns a list of open ports for a given process ID.

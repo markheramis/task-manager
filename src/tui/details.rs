@@ -3,7 +3,7 @@
 use tui::backend::CrosstermBackend;
 use tui::Frame;
 use tui::widgets::{Block, Borders, Paragraph};
-use crate::process::Task;
+use crate::process::Process;
 
 /// Renders the details block showing the selected process's name and ports.
 ///
@@ -12,7 +12,7 @@ use crate::process::Task;
 /// * `process` - The selected process to display details for
 pub fn render_details_block(
     f: &mut Frame<'_, CrosstermBackend<std::io::Stdout>>,
-    process: Option<&Task>,
+    process: Option<&Process>,
 ) {
     use crate::tui::layout::get_chunks;
     let chunks = get_chunks(f);

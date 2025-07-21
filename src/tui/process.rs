@@ -8,15 +8,15 @@ use tui::Frame;
 use tui::style::{Style, Color, Modifier};
 use tui::widgets::TableState;
 use std::io;
-use crate::process::Task;
 use crate::tui::{layout::get_chunks};
+use crate::process::Process;
 
 
 /// Render the process table block (left panel)
 pub fn render_process_block(
     f: &mut tui::Frame<'_, CrosstermBackend<io::Stdout>>,
     table_state: &mut TableState,
-    processes: &[crate::process::Task],
+    processes: &[crate::process::Process],
 ) {
     let chunks = get_chunks(f);
     let left_block = tui::widgets::Block::default()
@@ -38,7 +38,7 @@ pub fn render_process_table(
     block: Block,
     area: Rect,
     table_state: &mut TableState,
-    processes: &[Task],
+    processes: &[Process],
 ) {
     let header = Row::new(vec!["PID", "Name"])
         .style(Style::default().fg(Color::Yellow).add_modifier(Modifier::BOLD));

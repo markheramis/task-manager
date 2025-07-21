@@ -1,7 +1,7 @@
 // Process model definition
 
 /// Represents a process and its associated ports.
-pub struct Task {
+pub struct Process {
     /// Process ID
     pub pid: u32,
     /// Process name

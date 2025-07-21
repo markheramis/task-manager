@@ -7,7 +7,7 @@ use tui::widgets::TableState;
 
 pub fn handle_events(
     table_state: &mut TableState,
-    processes: &[crate::process::Task],
+    processes: &[crate::process::Process],
     process_table_area: Option<Rect>,
 ) -> Result<u8, std::io::Error> {
     // Handle input (quit, up/down, mouse click)
